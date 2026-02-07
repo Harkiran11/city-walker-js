@@ -62,6 +62,7 @@ button { cursor: pointer; padding: 10px; border: none; border-radius: 4px; }
     transition: transform 0.2s;
 }
 .landmark-item:hover { transform: scale(1.02); }
+.delete-btn:hover { background: #c0392b; }
 
 /* Popup Image Styles */
 .popup-img {
