@@ -97,6 +97,32 @@ function addMarkerToMap(landmark) {
     markers[landmark.id] = marker; // Store reference
 }
 
+// REQUIREMENT F: Synchronized List View
+function renderList() {
+    const list = document.getElementById('landmark-list');
+    list.innerHTML = '';
+
+    landmarks.forEach(lm => {
+        const item = document.createElement('li');
+        item.className = 'landmark-item';
+        item.innerHTML = `
+            <strong>${lm.title}</strong>
+            <p>${lm.description.substring(0, 50)}...</p>
+            <button class="delete-btn" onclick="deleteLandmark(${lm.id})">Delete</button>
+        `;
+
+        // REQUIREMENT F: Highlight/Pan map on list click
+        item.addEventListener('click', (e) => {
+            if(e.target.className !== 'delete-btn') {
+                map.setView([lm.lat, lm.lng], 16);
+                markers[lm.id].openPopup();
+            }
+        });
+
+        list.appendChild(item);
+    });
+}
+
 // REQUIREMENT F: Delete Landmark
 window.deleteLandmark = function(id) {
     // Remove from array
