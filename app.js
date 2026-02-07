@@ -96,3 +96,19 @@ function addMarkerToMap(landmark) {
     marker.bindPopup(popupContent);
     markers[landmark.id] = marker; // Store reference
 }
+
+// REQUIREMENT F: Persistence using localStorage
+function saveToStorage() {
+    localStorage.setItem('tourLandmarks', JSON.stringify(landmarks));
+}
+
+function loadFromStorage() {
+    const data = localStorage.getItem('tourLandmarks');
+    if (data) {
+        landmarks = JSON.parse(data);
+        landmarks.forEach(lm => {
+            addMarkerToMap(lm);
+        });
+        renderList();
+    }
+}
