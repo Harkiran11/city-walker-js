@@ -76,6 +76,6 @@ function convertToBase64(file) {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
-        // MISSING LINE HERE causing the bug
+        reader.readAsDataURL(file);
     });
 }
