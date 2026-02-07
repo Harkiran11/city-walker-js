@@ -37,6 +37,27 @@ function initMap() {
     });
 }
 
+function setupEventListeners() {
+    // Form Submission
+    document.getElementById('landmark-form').addEventListener('submit', handleFormSubmit);
+
+    // "Use My Location" Button
+    document.getElementById('geo-btn').addEventListener('click', () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+        }
+        navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            document.getElementById('lat').value = latitude;
+            document.getElementById('lng').value = longitude;
+            map.setView([latitude, longitude], 16);
+        }, () => {
+            alert("Unable to retrieve your location");
+        });
+    });
+}
+
 // --- Core Logic ---
 
 async function handleFormSubmit(e) {
