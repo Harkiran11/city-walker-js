@@ -97,6 +97,21 @@ function addMarkerToMap(landmark) {
     markers[landmark.id] = marker; // Store reference
 }
 
+// REQUIREMENT F: Delete Landmark
+window.deleteLandmark = function(id) {
+    // Remove from array
+    landmarks = landmarks.filter(lm => lm.id !== id);
+    
+    // Remove from Map
+    if (markers[id]) {
+        map.removeLayer(markers[id]);
+        delete markers[id];
+    }
+
+    saveToStorage();
+    renderList();
+}
+
 // REQUIREMENT F: Persistence using localStorage
 function saveToStorage() {
     localStorage.setItem('tourLandmarks', JSON.stringify(landmarks));
