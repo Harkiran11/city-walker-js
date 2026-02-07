@@ -36,3 +36,46 @@ function initMap() {
         document.getElementById('lng').value = e.latlng.lng.toFixed(6);
     });
 }
+
+// --- Core Logic ---
+
+async function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('description').value;
+    const lat = parseFloat(document.getElementById('lat').value);
+    const lng = parseFloat(document.getElementById('lng').value);
+    const imageFile = document.getElementById('image').files[0];
+
+    // REQUIREMENT A: Store image in memory (Base64)
+    // Intentionally not handling error here first for Git history purposes (see below)
+    const imageBase64 = await convertToBase64(imageFile);
+
+    const newLandmark = {
+        id: Date.now(), // Unique ID
+        title,
+        description: desc,
+        lat,
+        lng,
+        image: imageBase64
+    };
+
+    landmarks.push(newLandmark);
+    saveToStorage();
+    addMarkerToMap(newLandmark);
+    renderList();
+    
+    // Reset form
+    e.target.reset();
+}
+
+// Helper to convert file to Base64 string
+function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        // MISSING LINE HERE causing the bug
+    });
+}
