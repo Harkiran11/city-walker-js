@@ -79,3 +79,20 @@ function convertToBase64(file) {
         reader.readAsDataURL(file);
     });
 }
+
+function addMarkerToMap(landmark) {
+    // REQUIREMENT D: Interactive Map Marker
+    const marker = L.marker([landmark.lat, landmark.lng]).addTo(map);
+    
+    // Bind Popup content
+    const popupContent = `
+        <div class="popup-content">
+            <strong>${landmark.title}</strong><br>
+            <p>${landmark.description}</p>
+            <img src="${landmark.image}" class="popup-img" alt="${landmark.title}">
+        </div>
+    `;
+    
+    marker.bindPopup(popupContent);
+    markers[landmark.id] = marker; // Store reference
+}
