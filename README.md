@@ -12,7 +12,7 @@ A Vanilla JavaScript Single Page Application (SPA) that allows users to create, 
 *(Note: You will set this link up in Phase 4)*
 
 ## 📸 Screenshots
-![App Screenshot](./screenshot.png)
+![App Screenshot](./screenshot.PNG)
 
 ## ✨ Key Features
 
