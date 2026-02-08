@@ -8,7 +8,7 @@
 A Vanilla JavaScript Single Page Application (SPA) that allows users to create, manage, and visualize custom walking tours. This project demonstrates core frontend competencies including DOM manipulation, the Geolocation API, and client-side data persistence without external frameworks.
 
 ## 🚀 Live Demo
-[**Click here to view the live application**](https://YOUR_USERNAME.github.io/city-walker-js/) 
+[**Click here to view the live application**](https://Harkiran11.github.io/city-walker-js/) 
 
 ## 📸 Screenshots
 ![App Screenshot](./screenshot.png)
