@@ -11,7 +11,7 @@ A Vanilla JavaScript Single Page Application (SPA) that allows users to create, 
 [**Click here to view the live application**](https://Harkiran11.github.io/city-walker-js/) 
 
 ## 📸 Screenshots
-![App Screenshot](./screenshot.png)
+![App Screenshot](./screenshot.PNG)
 
 ## ✨ Key Features
 
